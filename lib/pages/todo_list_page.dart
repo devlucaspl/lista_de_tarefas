@@ -1,44 +1,56 @@
 import 'package:flutter/material.dart';
 
 class TodoListPage extends StatelessWidget {
-  TodoListPage({Key? key}) : super(key: key);
-
-  final TextEditingController tarefaController = TextEditingController();
+ const TodoListPage({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       body: Center(
         child: Padding(
-          padding: const EdgeInsets.only(left: 16, right: 16),
+          padding: const EdgeInsets.symmetric(horizontal: 16),
           child: Column(
             mainAxisSize: MainAxisSize.min,
             children: [
-              TextField(
-                controller: tarefaController,
-                decoration: InputDecoration(
-                  labelText: 'Nova Tarefa',
-                  hintText: 'Adicione uma nova tarefa',
-                  //border: OutlineInputBorder(),
-                  errorText: null,
-                ),
-                style: TextStyle(
-                  fontSize: 20,
-                ),
+              Row(
+                children: [
+                  Expanded(
+                    child: TextField(
+                      decoration: InputDecoration(
+                        border: OutlineInputBorder(),
+                        labelText: 'Adicione uma Tarefa',
+                      ),
+                    ),
+                  ),
+                  SizedBox(width: 10),
+                  ElevatedButton(
+                    onPressed: () {},
+                    style: ElevatedButton.styleFrom(
+                      padding: EdgeInsets.all(14),
+                    ),
+                    child: Icon(
+                      Icons.add,
+                      size: 30,
+                    ),
+                  )
+                ],
               ),
-              ElevatedButton(
-                  onPressed: login,
-                  child: Text('Entrar'),
+              SizedBox(height: 16),
+              Row(
+                children: [
+                  Expanded(
+                      child: Text('Você possui 0 tarefas.')),
+                  SizedBox(width: 8),
+                  ElevatedButton(
+                      onPressed: () {},
+                      child: Text('Limpar Tudo!')
+                  )
+                ],
               )
             ],
           ),
         ),
       ),
     );
-  }
-
-  void login() {
-    String text = tarefaController.text;
-    print(text);
   }
 }
